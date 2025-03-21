@@ -52,7 +52,7 @@ export class DCAService {
       // If this is not the first execution, apply risk-based strategy
       if (plan.executionCount > 0) {
         // Get price analysis for Injective token
-        const analysis = await analyzeTokenPrice('injective-protocol');
+        const analysis = await analyzeTokenPrice('aptos');
         
         // Get risk multiplier based on user's selected risk level
         const riskMultiplier = getRiskMultiplier(plan.riskLevel as RiskLevel);

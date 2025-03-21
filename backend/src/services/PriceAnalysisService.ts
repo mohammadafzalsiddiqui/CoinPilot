@@ -89,7 +89,7 @@ function calculatePriceChangePercentage(prices: PriceData[]): number {
   return percentageChange;
 }
 
-export async function analyzeTokenPrice(tokenId: string = 'sonic-svm'): Promise<AnalysisResult> {
+export async function analyzeTokenPrice(tokenId: string): Promise<AnalysisResult> {
   try {
     // Fetch historical price data with extra days to ensure we have enough data points
     const priceData = await fetchHistoricalPrices(tokenId, 31);
