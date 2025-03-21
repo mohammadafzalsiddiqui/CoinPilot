@@ -1,0 +1,6 @@
+{"level":"error","message":"Aptos Plugin: Failed to execute transaction: Error: Private key not found in environment variables (PRIVATE_KEY_APTOS)","timestamp":"2025-03-21T19:53:58.618Z"}
+{"level":"error","message":"Aptos Plugin: Failed to execute transaction: Error: Private key not found in environment variables (PRIVATE_KEY_APTOS)","timestamp":"2025-03-21T20:04:21.708Z"}
+{"level":"info","message":"Aptos Plugin: Swapping 1 USDC to APT for recipient: 0x005547188851320ad9851e703688af8b82d0fda54f7a174207a7731689c9e225","timestamp":"2025-03-21T20:05:13.945Z"}
+{"level":"info","message":"Swap transaction submitted: 0xb01742c56b57c5f4dfec292ad6a8a220ac2a021a911de62576022cf070274f51","timestamp":"2025-03-21T20:05:15.005Z"}
+{"level":"info","message":"Transferring 8.78637329 APT to 0x005547188851320ad9851e703688af8b82d0fda54f7a174207a7731689c9e225","timestamp":"2025-03-21T20:05:16.614Z"}
+{"level":"info","message":"Transfer transaction submitted: 0x3f69756b5886080abf6027ef15d7cb440bdf0d1872deb7a2cbac27324dd6da23","timestamp":"2025-03-21T20:05:17.818Z"}
