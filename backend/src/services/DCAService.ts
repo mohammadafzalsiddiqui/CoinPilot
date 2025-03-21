@@ -5,18 +5,16 @@ import { InvestmentPlan, IInvestmentPlan, RiskLevel } from '../models/Investment
 import { User, IUser } from '../models/User';
 import cron from 'node-cron';
 import { logger } from '../utils/logger';
-<<<<<<< Updated upstream
 import { analyzeTokenPrice, getRiskMultiplier } from './PriceAnalysisService';
-=======
-import { analyzeTokenPrice, getRiskMultiplier } from './PricaAnalysisService';
->>>>>>> Stashed changes
+import { AptosPlugin } from '../plugins/aptos';
+
 
 export class DCAService {
   private plugin: DCAPlugin;
   private cronJobs: Map<string, cron.ScheduledTask>;
 
   constructor() {
-    this.plugin = process.env.BLOCKCHAIN_PLUGIN === 'ton' ? new TonPlugin() : new InjectivePlugin();
+    this.plugin = process.env.BLOCKCHAIN_PLUGIN === 'aptos' ? new AptosPlugin() : new InjectivePlugin();
     this.cronJobs = new Map();
     this.initializeExistingPlans();
   }
@@ -56,7 +54,7 @@ export class DCAService {
       // If this is not the first execution, apply risk-based strategy
       if (plan.executionCount > 0) {
         // Get price analysis for Injective token
-        const analysis = await analyzeTokenPrice('injective-protocol');
+        const analysis = await analyzeTokenPrice('aptos');
         
         // Get risk multiplier based on user's selected risk level
         const riskMultiplier = getRiskMultiplier(plan.riskLevel as RiskLevel);

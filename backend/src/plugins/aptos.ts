@@ -19,7 +19,7 @@ export class AptosPlugin implements DCAPlugin {
   }
 
   private getAccount(): AptosAccount {
-    const privateKeyHex = 'x';
+    const privateKeyHex = process.env.PRIVATE_KEY_APTOS;
     if (!privateKeyHex) {
       throw new Error("Private key not found in environment variables (PRIVATE_KEY_APTOS)");
     }
