@@ -1,2 +1,0 @@
-{"level":"error","message":"Aptos Plugin: Failed to execute transaction: Error: Private key not found in environment variables (PRIVATE_KEY_APTOS)","timestamp":"2025-03-21T19:53:58.618Z"}
-{"level":"error","message":"Aptos Plugin: Failed to execute transaction: Error: Private key not found in environment variables (PRIVATE_KEY_APTOS)","timestamp":"2025-03-21T20:04:21.708Z"}

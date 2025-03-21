@@ -89,7 +89,7 @@ function calculatePriceChangePercentage(prices: PriceData[]): number {
   return percentageChange;
 }
 
-export async function analyzeTokenPrice(tokenId: string): Promise<AnalysisResult> {
+export async function analyzeTokenPrice(tokenId: string = 'injective-protocol'): Promise<AnalysisResult> {
   try {
     // Fetch historical price data with extra days to ensure we have enough data points
     const priceData = await fetchHistoricalPrices(tokenId, 31);
@@ -103,7 +103,7 @@ export async function analyzeTokenPrice(tokenId: string): Promise<AnalysisResult
     
     // Use OpenAI to analyze the data and provide a factor between 0-1 or 1-2
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
@@ -116,8 +116,8 @@ export async function analyzeTokenPrice(tokenId: string): Promise<AnalysisResult
           
           - If price is rising (positive price change %), return a number between 1 and 2:
             * For minimal price increases (0-3%), return a number close to 1 (1.0-1.3)
-            * For moderate price increases (3-10%), return a mid-range number (1.4-1.7)
-            * For significant price increases (>10%), return a number close to 2 (1.7-1.9)
+            * For moderate price increases (3-10%), return a mid-range number (1.3-1.7)
+            * For significant price increases (>10%), return a number close to 2 (1.8-1.9)
           
           Only return the number as a JSON object with a single field called "priceFactor". Nothing else.`
         },

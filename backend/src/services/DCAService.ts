@@ -5,7 +5,11 @@ import { InvestmentPlan, IInvestmentPlan, RiskLevel } from '../models/Investment
 import { User, IUser } from '../models/User';
 import cron from 'node-cron';
 import { logger } from '../utils/logger';
+<<<<<<< Updated upstream
 import { analyzeTokenPrice, getRiskMultiplier } from './PriceAnalysisService';
+=======
+import { analyzeTokenPrice, getRiskMultiplier } from './PricaAnalysisService';
+>>>>>>> Stashed changes
 
 export class DCAService {
   private plugin: DCAPlugin;
@@ -52,7 +56,7 @@ export class DCAService {
       // If this is not the first execution, apply risk-based strategy
       if (plan.executionCount > 0) {
         // Get price analysis for Injective token
-        const analysis = await analyzeTokenPrice('aptos');
+        const analysis = await analyzeTokenPrice('injective-protocol');
         
         // Get risk multiplier based on user's selected risk level
         const riskMultiplier = getRiskMultiplier(plan.riskLevel as RiskLevel);
