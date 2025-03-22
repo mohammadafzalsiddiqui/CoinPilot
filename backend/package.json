@@ -6,7 +6,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn src/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "setup-mock": "ts-node src/scripts/setup-mock.ts",
+    "start-mock": "ts-node-dev --respawn src/index.ts"
   },
   "author": "Ansh Saxena",
   "license": "ISC",

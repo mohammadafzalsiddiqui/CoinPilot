@@ -6,15 +6,28 @@ import { User, IUser } from '../models/User';
 import cron from 'node-cron';
 import { logger } from '../utils/logger';
 import { analyzeTokenPrice, getRiskMultiplier } from './PriceAnalysisService';
+import { MockPlugin } from '../plugins/mock';
+import { mockAnalyzeTokenPrice, mockGetRiskMultiplier } from './MockPriceAnalysisService';
 import { AptosPlugin } from '../plugins/aptos';
-
 
 export class DCAService {
   private plugin: DCAPlugin;
   private cronJobs: Map<string, cron.ScheduledTask>;
 
   constructor() {
-    this.plugin = process.env.BLOCKCHAIN_PLUGIN === 'aptos' ? new AptosPlugin() : new InjectivePlugin();
+    const pluginType = process.env.BLOCKCHAIN_PLUGIN || 'mock';
+    
+    if (pluginType === 'mock') {
+      this.plugin = new MockPlugin();
+    } else if (pluginType === 'ton') {
+      this.plugin = new AptosPlugin();
+    } else if (pluginType === 'injective') {
+      this.plugin = new TonPlugin();
+    }
+    else {
+      this.plugin = new InjectivePlugin();
+    }
+    
     this.cronJobs = new Map();
     this.initializeExistingPlans();
   }
@@ -54,10 +67,15 @@ export class DCAService {
       // If this is not the first execution, apply risk-based strategy
       if (plan.executionCount > 0) {
         // Get price analysis for Injective token
-        const analysis = await analyzeTokenPrice('aptos');
+        const tokenId = process.env.ANALYSIS_TOKEN_ID || 'injective-protocol';
+        const analysis = process.env.BLOCKCHAIN_PLUGIN === 'mock'
+          ? await mockAnalyzeTokenPrice(tokenId)
+          : await analyzeTokenPrice(tokenId);
         
         // Get risk multiplier based on user's selected risk level
-        const riskMultiplier = getRiskMultiplier(plan.riskLevel as RiskLevel);
+        const riskMultiplier = process.env.BLOCKCHAIN_PLUGIN === 'mock'
+          ? mockGetRiskMultiplier(plan.riskLevel as RiskLevel)
+          : getRiskMultiplier(plan.riskLevel as RiskLevel);
         
         // Calculate updated amount based on risk level
         const updatedAmount = plan.initialAmount * riskMultiplier;
