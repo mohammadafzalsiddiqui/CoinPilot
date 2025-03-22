@@ -7,9 +7,9 @@ const router = express.Router();
 const dcaService = new DCAService();
 
 // Create a new DCA plan
-router.post('/plans', async (req, res) => {
+router.post('/plans/token/:tokenId', async (req, res) => {
   try {
-    const tokenId  = "aptos";
+    const { tokenId } = req.params;
     const { userId, amount, frequency, toAddress, riskLevel } = req.body;
     
     if (!userId || !amount || !frequency || !toAddress) {
