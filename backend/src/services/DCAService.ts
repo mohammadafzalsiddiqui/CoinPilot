@@ -19,12 +19,9 @@ export class DCAService {
     
     if (pluginType === 'mock') {
       this.plugin = new MockPlugin();
-    } else if (pluginType === 'ton') {
+    } else if (pluginType === 'aptos') {
       this.plugin = new AptosPlugin();
-    } else if (pluginType === 'injective') {
-      this.plugin = new TonPlugin();
-    }
-    else {
+    } else {
       this.plugin = new InjectivePlugin();
     }
     
