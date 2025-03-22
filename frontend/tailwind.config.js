@@ -4,5 +4,8 @@ export default {
   theme: {
     extend: {},
   },
+  textColor: {
+    white: '#FFFFFF', // Ensure the text is white globally
+  },
   plugins: [],
 };
