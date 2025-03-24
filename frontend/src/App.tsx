@@ -10,7 +10,9 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard onBack={function (): void {
+            throw new Error('Function not implemented.');
+          } } />} />
       </Routes>
     </Router>
     </div>

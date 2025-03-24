@@ -33,7 +33,7 @@ interface ViewDCAPlansProps {
 
 const ViewDCAPlans: React.FC<ViewDCAPlansProps> = ({
   userId,
-  apiBaseUrl = "http://localhost:8000/api",
+  apiBaseUrl = "http://localhost:3000/api",
   onCreateNew,
   onBack
 }) => {

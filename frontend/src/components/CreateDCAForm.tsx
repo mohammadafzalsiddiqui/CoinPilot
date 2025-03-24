@@ -29,7 +29,7 @@ const mapRiskLevel = (risk: string) => {
 const CreateDCAForm: React.FC<CreateDCAFormProps> = ({
   walletAddress,
   userId,
-  apiBaseUrl = "http://localhost:8000/api",
+  apiBaseUrl = "http://localhost:3000/api",
   onSuccess,
   onCancel
 }) => {
@@ -57,7 +57,7 @@ const CreateDCAForm: React.FC<CreateDCAFormProps> = ({
             return;
           }
           const address = account.address.toString();
-          const response = await axios.post(`${apiBaseUrl}/user`, { address });
+          const response = await axios.post(`${apiBaseUrl}/users`, { address });
           if (response.data && response.data._id) {
             setCurrentUserId(response.data._id);
             localStorage.setItem('userId', response.data._id);
