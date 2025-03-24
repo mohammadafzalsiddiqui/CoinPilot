@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import CreateDCAForm from '../components/CreateDCAForm';
 import ViewDCAPlans from '../components/ViewDCAPlans';
 import Dashboard from './dashboard';
 
 function Home() {
+  const navigate = useNavigate();
   const [currentView, setCurrentView] = useState('home'); // 'home', 'create', 'view', 'dashboard'
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
@@ -29,6 +31,10 @@ function Home() {
 
   const handleMockMoney = () => {
     setCurrentView('dashboard');
+  };
+
+  const handleSmartPool = () => {
+    navigate('/smartpool');
   };
 
   const backToOptions = () => {
@@ -80,9 +86,12 @@ function Home() {
                 <h3 className="text-xl font-semibold mb-3">Mock Money</h3>
                 <p className="text-gray-400">Track and visualize mock transactions in real-time</p>
               </div>
-              <div className="bg-white/5 p-6 rounded-lg backdrop-blur-sm">
+              <div 
+                className="bg-white/5 p-6 rounded-lg backdrop-blur-sm cursor-pointer hover:bg-white/10 transition-colors"
+                onClick={handleSmartPool}
+              >
                 <h3 className="text-xl font-semibold mb-3">Smart Pool</h3>
-                <p className="text-gray-400">coming soon</p>
+                <p className="text-gray-400">Earn high yields with leveraged liquidity strategies</p>
               </div>
             </div>
 
