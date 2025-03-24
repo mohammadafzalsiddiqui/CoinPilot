@@ -12,16 +12,19 @@ import dotenv from "dotenv";
 interface PoolData {
   assetName: string;
   tokenAddress: string;
-  ltv: number;
+  ltv: number | string;
   decimals: number;
   marketSize: number;
   totalBorrowed: number;
   depositApy: number;
-  extraDepositApy: number;
+  extraDepositApy: number | string;
   borrowApy: number;
   price: number;
 }
 
+/**
+ * Fetches all available pools from Joule Finance
+ */
 async function getAllPoolData(): Promise<PoolData[]> {
   // Load environment variables
   dotenv.config();
@@ -48,30 +51,40 @@ async function getAllPoolData(): Promise<PoolData[]> {
   const agentRuntime = new AgentRuntime(signer, aptos);
   
   try {
-    // Fetch all pool data by getting a list of tokens first
-    // This list is based on the tokens available in the Joule protocol
-    const tokenAddresses = [
-      "0x1::aptos_coin::AptosCoin", // APT
-      "0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC", // USDC
-      // You can add more token addresses here as needed
-    ];
+    // Fetch all available pools directly from the Joule Finance API
+    const allPoolDetailsResponse = await fetch("https://price-api.joule.finance/api/market");
     
-    // Fetch pool details for each token
-    const poolDetailsPromises = tokenAddresses.map(async (tokenAddress) => {
-      try {
-        // Note: Ensure that getPoolDetails is implemented in AgentRuntime
-        // If it's not, you'll need to implement this method or use the appropriate method from the SDK
-        return await agentRuntime.getPoolDetails(tokenAddress);
-      } catch (error) {
-        console.error(`Error fetching pool details for ${tokenAddress}:`, error);
-        return null;
-      }
+    if (!allPoolDetailsResponse.ok) {
+      throw new Error(`API request failed with status: ${allPoolDetailsResponse.status}`);
+    }
+    
+    const allPoolDetails = await allPoolDetailsResponse.json();
+    
+    if (!allPoolDetails || !allPoolDetails.data || !Array.isArray(allPoolDetails.data)) {
+      throw new Error("Invalid response format from API");
+    }
+    
+    console.log(`Found ${allPoolDetails.data.length} pools from Joule Finance API`);
+    
+    // Process all available pools from the API
+    const poolsData = allPoolDetails.data.map((poolDetail: any) => {
+      // Extract the token address from the asset type
+      // The format is typically something like "0x1::aptos_coin::AptosCoin"
+      const tokenAddress = extractTokenAddress(poolDetail.asset.type);
+      
+      return {
+        assetName: poolDetail.asset.assetName,
+        tokenAddress: tokenAddress,
+        ltv: poolDetail.ltv,
+        decimals: poolDetail.asset.decimals,
+        marketSize: Number(poolDetail.marketSize) / poolDetail.asset.decimals,
+        totalBorrowed: Number(poolDetail.totalBorrowed) / poolDetail.asset.decimals,
+        depositApy: poolDetail.depositApy,
+        extraDepositApy: poolDetail.extraAPY?.depositAPY ?? "0",
+        borrowApy: poolDetail.borrowApy,
+        price: poolDetail.priceInfo.price,
+      };
     });
-    
-    // Wait for all promises to resolve
-    const poolsData = (await Promise.all(poolDetailsPromises)).filter(
-      (pool): pool is PoolData => pool !== null
-    );
     
     return poolsData;
     
@@ -81,10 +94,28 @@ async function getAllPoolData(): Promise<PoolData[]> {
   }
 }
 
+/**
+ * Helper function to extract token address from the asset type string
+ */
+function extractTokenAddress(assetType: string): string {
+  // The asset type might contain additional information
+  // We need to extract just the token address part
+  
+  // Match patterns like "0x1::aptos_coin::AptosCoin" 
+  const match = assetType.match(/0x[a-fA-F0-9]+::[a-zA-Z_]+::[a-zA-Z_]+/);
+  if (match) {
+    return match[0];
+  }
+  
+  // If we can't extract it, return the original string
+  return assetType;
+}
+
 // Execute the function
 getAllPoolData()
   .then((poolsData) => {
     console.log("All Pools Data:", JSON.stringify(poolsData, null, 2));
+    console.log(`Total pools found: ${poolsData.length}`);
   })
   .catch((error) => {
     console.error("Failed to get pool data:", error);
