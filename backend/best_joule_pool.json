@@ -1,0 +1,13 @@
+{
+  "assetName": "ABTC",
+  "tokenAddress": "0x4e1854f6d332c9525e258fb6e66f84b6af8aba687bbcb832a24768c4e175feec::abtc::ABTC",
+  "ltv": "4500",
+  "decimals": 10000000000,
+  "marketSize": 0,
+  "totalBorrowed": 0,
+  "depositApy": 34.75,
+  "extraDepositApy": 0,
+  "totalDepositApy": 34.75,
+  "borrowApy": 72.42,
+  "price": 86937.53999999
+}

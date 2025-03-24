@@ -193,12 +193,12 @@ const ViewDCAPlans: React.FC<ViewDCAPlansProps> = ({
           <p className="text-gray-400">Manage your automated USDT swap transactions</p>
         </div>
         
-        {totalInvestment !== null && (
+        {/* {totalInvestment !== null && (
           <div className="bg-gray-900 px-4 py-3 rounded">
             <p className="text-sm text-gray-400">Total Invested</p>
             <p className="text-2xl font-bold">{totalInvestment.toFixed(2)} USDT</p>
           </div>
-        )}
+        )} */}
       </div>
       
       <style jsx global>{`
