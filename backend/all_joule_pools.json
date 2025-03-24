@@ -7,10 +7,10 @@
     "marketSize": 0,
     "totalBorrowed": 0,
     "depositApy": 4.2299999999999995,
-    "extraDepositApy": 5.661181648404545,
-    "totalDepositApy": 9.891181648404544,
-    "borrowApy": 6.7,
-    "price": 0.9999631600000001
+    "extraDepositApy": 5.697565084608194,
+    "totalDepositApy": 9.927565084608194,
+    "borrowApy": 6.710000000000001,
+    "price": 0.9999512700000001
   },
   {
     "assetName": "USDt",
@@ -20,10 +20,10 @@
     "marketSize": 0,
     "totalBorrowed": 0,
     "depositApy": 3.9600000000000004,
-    "extraDepositApy": 7.064739078391882,
-    "totalDepositApy": 11.024739078391882,
+    "extraDepositApy": 7.109350096393641,
+    "totalDepositApy": 11.069350096393642,
     "borrowApy": 6.3,
-    "price": 0.99992506
+    "price": 1.000025
   },
   {
     "assetName": "TruAPT coin",
@@ -36,7 +36,7 @@
     "extraDepositApy": 0,
     "totalDepositApy": 0,
     "borrowApy": 0,
-    "price": 6.01042135
+    "price": 6.05064294
   },
   {
     "assetName": "AptosCoin",
@@ -49,7 +49,7 @@
     "extraDepositApy": 0,
     "totalDepositApy": 2.8400000000000003,
     "borrowApy": 4.590000000000001,
-    "price": 5.73740815
+    "price": 5.77424216
   },
   {
     "assetName": "WETH",
@@ -59,10 +59,10 @@
     "marketSize": 0,
     "totalBorrowed": 0,
     "depositApy": 0.48,
-    "extraDepositApy": 5.178022367127354,
-    "totalDepositApy": 5.658022367127353,
+    "extraDepositApy": 5.147078938970229,
+    "totalDepositApy": 5.627078938970229,
     "borrowApy": 1.66,
-    "price": 2017.10437004
+    "price": 2042.2572914300001
   },
   {
     "assetName": "AmnisApt",
@@ -75,7 +75,7 @@
     "extraDepositApy": 0,
     "totalDepositApy": 0.19,
     "borrowApy": 1.04,
-    "price": 5.73740815
+    "price": 5.77424216
   },
   {
     "assetName": "StakedApt",
@@ -85,10 +85,10 @@
     "marketSize": 0,
     "totalBorrowed": 0,
     "depositApy": 0.04,
-    "extraDepositApy": 3.738450988878581,
-    "totalDepositApy": 3.778450988878581,
+    "extraDepositApy": 3.737440712365462,
+    "totalDepositApy": 3.777440712365462,
     "borrowApy": 0.45999999999999996,
-    "price": 6.47087192
+    "price": 6.51417484
   },
   {
     "assetName": "WBTC",
@@ -98,10 +98,10 @@
     "marketSize": 0,
     "totalBorrowed": 0,
     "depositApy": 0.09,
-    "extraDepositApy": 7.599811636583468,
-    "totalDepositApy": 7.6898116365834674,
+    "extraDepositApy": 7.631208690982618,
+    "totalDepositApy": 7.721208690982618,
     "borrowApy": 0.7100000000000001,
-    "price": 86619.80457242
+    "price": 86817.23395132
   },
   {
     "assetName": "ABTC",
@@ -114,7 +114,7 @@
     "extraDepositApy": 0,
     "totalDepositApy": 34.75,
     "borrowApy": 72.42,
-    "price": 86755.46261412
+    "price": 86937.53999999
   },
   {
     "assetName": "eAPT",
@@ -127,7 +127,7 @@
     "extraDepositApy": 0,
     "totalDepositApy": 0,
     "borrowApy": 0.11,
-    "price": 5.837847217073901
+    "price": 5.875326043252961
   },
   {
     "assetName": "StakedThalaAPT",
@@ -140,7 +140,7 @@
     "extraDepositApy": 0,
     "totalDepositApy": 0,
     "borrowApy": 0,
-    "price": 6.566652904769869
+    "price": 6.608810644368859
   },
   {
     "assetName": "USDC",
@@ -149,11 +149,11 @@
     "decimals": 1000000,
     "marketSize": 0,
     "totalBorrowed": 0,
-    "depositApy": 1.81,
+    "depositApy": 1.52,
     "extraDepositApy": 0,
-    "totalDepositApy": 1.81,
-    "borrowApy": 4.25,
-    "price": 0.9999631600000001
+    "totalDepositApy": 1.52,
+    "borrowApy": 3.9,
+    "price": 0.9999512700000001
   },
   {
     "assetName": "USDT",
@@ -166,6 +166,6 @@
     "extraDepositApy": 0,
     "totalDepositApy": 3.7600000000000002,
     "borrowApy": 6.13,
-    "price": 0.99992506
+    "price": 1.000025
   }
 ]
