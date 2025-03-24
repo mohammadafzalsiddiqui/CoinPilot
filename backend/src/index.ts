@@ -2,8 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import dcaRoutes from './routes/dca';
-import userRoutes from './routes/user';
-import jouleRoutes from './routes/joule'; // Import Joule routes
+import userRoutes from './routes/user'; // Import user routes
 import { logger } from './utils/logger';
 
 dotenv.config();
@@ -32,8 +31,7 @@ app.use((req, res, next) => {
 
 // API routes
 app.use('/api/dca', dcaRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/joule', jouleRoutes); // Add Joule routes
+app.use('/api/users', userRoutes); // Use the correct user routes
 
 
 mongoose.connect(MONGODB_URI)

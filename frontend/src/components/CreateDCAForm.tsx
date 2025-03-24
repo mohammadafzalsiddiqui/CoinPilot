@@ -289,10 +289,10 @@ const CreateDCAForm: React.FC<CreateDCAFormProps> = ({
                 {isLoading ? (
                   <>
                     <Loader2 className="inline-block mr-2 h-4 w-4 animate-spin" />
-                    {txStatus || "Scheduling Transfer..."}
+                    {txStatus || "Scheduling plans..."}
                   </>
                 ) : (
-                  "Schedule USDC Transfer"
+                  "Schedule plan"
                 )}
               </button>
             </div>
